@@ -4,7 +4,7 @@
 <details>
 
 Para executar o docker basta rodar o comando `chmod +x detectos.sh`
-Depois no terminal rodar o comando ./detectos.sh
+No terminal rode o comando `./detectos.sh`
 Estes passos irá instalar o Docker na sua máquina via comando de linha a partir do script Shell, e após isso rodar a imagem do projeto.
 </details>
 
