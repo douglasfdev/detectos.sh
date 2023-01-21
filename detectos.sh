@@ -14,40 +14,42 @@ case "$OSTYPE" in
           if [[ $(which docker) && $(docker --version) ]]
           then
             docker-compose up -d;
-          elif echo "Seu sistema não suporta o Docker"
-          else sudo apt-get install docker-engine -y &&\
+          elif [[ ! $(which docker) && !$(docker --version) ]]
+            sudo apt-get install docker-engine -y &&\
             sudo service docker start &&\
             docker-compose up -d
+          elif [[ ! $(which docker-compose) && ! $(docker-compose -v) ]]
+          echo "Seu sistema não suporta o Docker"
           fi ;;
   windowsnt*) 
           if [[ $(wsl --set-default-version > 1) ]]
-          wsl.exe && \
-          instalar docker &&\
-          rodar docker-compose up -d
+            wsl.exe && \
+            instalar docker &&\
+            rodar docker-compose up -d
           elif [[ ! $(wsl --version) ]]
-          wsl --install && \
-          wsl.exe
-          instalar docker \
-          rodar docker-compose
+            wsl --install && \
+            wsl.exe
+            instalar docker \
+            rodar docker-compose
           fi ;; 
   msys*) if [[ $(wsl --set-default-version > 1) ]]
-          wsl.exe && \
-          instalar docker &&\
-          rodar docker-compose up -d
+            wsl.exe && \
+            instalar docker &&\
+            rodar docker-compose up -d
           elif [[ ! $(wsl --version) ]]
-          wsl --install && \
-          wsl.exe
-          instalar docker \
-          rodar docker-compose
+            wsl --install && \
+            wsl.exe &&\
+            instalar docker &&\
+            rodar docker-compose
           fi ;; 
   cygwin*)  if [[ $(wsl --set-default-version > 1) ]]
-          wsl.exe && \
-          instalar docker &&\
-          rodar docker-compose up -d
+            wsl.exe && \
+            instalar docker &&\
+            rodar docker-compose up -d
           elif [[ ! $(wsl --version) ]]
-          wsl --install && \
-          wsl.exe
-          instalar docker \
-          rodar docker-compose
+            wsl --install && \
+            wsl.exe  &&\
+            instalar docker &&\
+            rodar docker-compose
           fi ;;
 esac
