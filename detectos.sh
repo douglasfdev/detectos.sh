@@ -15,7 +15,7 @@ case "$OSTYPE" in
           then
             docker-compose up -d;
           elif [[ ! $(which docker) && !$(docker --version) ]]
-            sudo apt-get install docker-engine -y &&\
+            sudo apt install docker-engine -y &&\
             sudo service docker start &&\
             docker-compose up -d
           elif [[ ! $(which docker-compose) && ! $(docker-compose -v) ]]
@@ -24,32 +24,46 @@ case "$OSTYPE" in
   windowsnt*) 
           if [[ $(wsl --set-default-version > 1) ]]
             wsl.exe && \
-            instalar docker &&\
-            rodar docker-compose up -d
+            wsl sudo apt install docker-engine -y &&\
+            wsl docker-compose up -d
           elif [[ ! $(wsl --version) ]]
             wsl --install && \
-            wsl.exe
-            instalar docker \
-            rodar docker-compose
-          fi ;; 
-  msys*) if [[ $(wsl --set-default-version > 1) ]]
-            wsl.exe && \
-            instalar docker &&\
-            rodar docker-compose up -d
-          elif [[ ! $(wsl --version) ]]
-            wsl --install && \
+            wsl.exe --set-default-version 2 &&\
+            wsl --set-default ubuntu &&\
             wsl.exe &&\
-            instalar docker &&\
-            rodar docker-compose
+            wsl instalar docker &&\
+            wsl docker-compose up -d
+          else
+            echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
-  cygwin*)  if [[ $(wsl --set-default-version > 1) ]]
+  msys*)
+          if [[ $(wsl --set-default-version > 1) ]]
             wsl.exe && \
-            instalar docker &&\
-            rodar docker-compose up -d
+            wsl sudo apt install docker-engine -y &&\
+            wsl docker-compose up -d
           elif [[ ! $(wsl --version) ]]
             wsl --install && \
-            wsl.exe  &&\
-            instalar docker &&\
-            rodar docker-compose
-          fi ;;
+            wsl.exe --set-default-version 2 &&\
+            wsl --set-default ubuntu &&\
+            wsl.exe &&\
+            wsl instalar docker &&\
+            wsl docker-compose up -d
+          else
+            echo "Seu sistema não tem suporte ao Docker"
+          fi ;; 
+  cygwin*)
+          if [[ $(wsl --set-default-version > 1) ]]
+            wsl.exe && \
+            wsl sudo apt install docker-engine -y &&\
+            wsl docker-compose up -d
+          elif [[ ! $(wsl --version) ]]
+            wsl --install && \
+            wsl.exe --set-default-version 2 &&\
+            wsl --set-default ubuntu &&\
+            wsl.exe &&\
+            wsl instalar docker &&\
+            wsl docker-compose up -d
+          else
+            echo "Seu sistema não tem suporte ao Docker"
+          fi ;; 
 esac
