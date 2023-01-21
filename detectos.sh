@@ -28,7 +28,7 @@ case "$OSTYPE" in
           then
             wsl.exe && \
             wsl sudo apt install docker-engine -y &&\
-            wsl docker-compose up -d;
+            wsl docker- ps;
           elif [[ ! $(wsl --version) ]]
           then
             wsl --install && \
@@ -36,7 +36,7 @@ case "$OSTYPE" in
             wsl --set-default ubuntu &&\
             wsl.exe &&\
             wsl instalar docker &&\
-            wsl docker-compose up -d;
+            wsl docker ps;
           else
             echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
@@ -45,7 +45,7 @@ case "$OSTYPE" in
           then
             wsl.exe && \
             wsl sudo apt install docker-engine -y &&\
-            wsl docker-compose up -d;
+            wsl docker ps;
           elif [[ ! $(wsl --version) ]]
           then
             wsl --install && \
@@ -53,7 +53,7 @@ case "$OSTYPE" in
             wsl --set-default ubuntu &&\
             wsl.exe &&\
             wsl instalar docker &&\
-            wsl docker-compose up -d;
+            wsl docker ps;
           else
             echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
@@ -62,7 +62,7 @@ case "$OSTYPE" in
           then
             wsl.exe && \
             wsl sudo apt install docker-engine -y &&\
-            wsl docker-compose up -d;
+            wsl docker ps;
           elif [[ ! $(wsl --version) ]]
           then
             wsl --install && \
@@ -70,7 +70,7 @@ case "$OSTYPE" in
             wsl --set-default ubuntu &&\
             wsl.exe &&\
             wsl instalar docker &&\
-            wsl docker-compose up -d;
+            wsl docker ps;
           else
             echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
