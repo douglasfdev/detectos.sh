@@ -1,10 +1,10 @@
-!#/bin/bash
+#!/bin/bash
 
 case "$OSTYPE" in
   darwin*)
           if [[ $(which docker) && $(docker --version) ]]
           then
-            docker-compose up -d;
+            docker ps;
           else /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&\
             brew install docker &&\
             brew install docker-compose &&\
