@@ -13,12 +13,12 @@ case "$OSTYPE" in
   linux*)
           if [[ $(which docker) && $(docker --version) ]]
           then
-            docker-compose up -d;
+            docker ps;
           elif [[ ! $(which docker) && !$(docker --version) ]]
           then
-            sudo apt install docker-engine -y &&\
+            sudo apt install docker -y &&\
             sudo service docker start &&\
-            docker-compose up -d;
+            docker ps;
           elif [[ ! $(which docker-compose) && ! $(docker-compose -v) ]]
           then
           echo "Seu sistema não suporta o Docker"
