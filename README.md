@@ -20,5 +20,25 @@ O Docker resolverá o problema se caso, você não tiver o driver do banco de da
 <details>
 
 Por padrão o projeto usa o banco de dados MySQL, porém você pode alterar no `docker-compose.yml` no parametro: `image: mysql` para `image: SQL desejado`.
-Poderá escolher seu banco de dados relacionais a partir deste link: [Docker Hub](https://hub.docker.com/search?q=)
+
+Variáveis de ambiente:
+```yml
+environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_USER=example
+```
+Caso queira mudar as credenciais do banco de dados basta mudar essas variáveis de ambiente voltada para sua aplicação.
+
+Poderá escolher seu banco de dados relacionais a partir deste link: [Docker Hub](https://hub.docker.com/search?q=).
+Após isso leia atentamente a documentação da imagem de seu banco de dados de preferencia, e coloque as variáveis de ambiente conforme documentação.
+
+Por exemplo, se for PostgreSQL:
+```yml
+environment:
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_USER=example
+      - POSTGRES_DB=example
+
+```
 </details>
