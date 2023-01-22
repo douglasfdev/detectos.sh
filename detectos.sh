@@ -4,15 +4,18 @@ case "$OSTYPE" in
   darwin*)
           if [[ $(which docker) && $(docker --version) ]]
           then
+            wait open -a Docker.app 
             docker ps;
           else /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&\
             brew install docker &&\
             brew install docker-compose &&\
+            wait open -a Docker.app &&\
             docker ps;
           fi ;;
   linux*)
           if [[ $(which docker) && $(docker --version) ]]
           then
+            wait open -a Docker.app &&\
             docker ps;
           elif [[ ! $(which docker) && ! $(docker --version) ]]
           then
@@ -20,6 +23,7 @@ case "$OSTYPE" in
             sudo apt install curl  &&\
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             sudo chmod +x /usr/local/bin/docker-compose &&\
+            wait open -a Docker.app &&\
             docker ps;
           elif [[ ! $(which docker-compose) && ! $(docker-compose -v) ]]
           then
@@ -74,7 +78,7 @@ case "$OSTYPE" in
   cygwin*)
           if [[ $(wsl --set-default-version > 1) && ! $(which docker) && !$(docker --version) ]]
           then
-            wsl.exe && \
+            wsl.exe &&\
             wsl sudo apt install docker -y &&\
             wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
