@@ -14,37 +14,48 @@ case "$OSTYPE" in
           if [[ $(which docker) && $(docker --version) ]]
           then
             docker ps;
-          elif [[ ! $(which docker) && !$(docker --version) ]]
+          elif [[ ! $(which docker) && ! $(docker --version) ]]
           then
             sudo apt install docker -y &&\
-            sudo service docker start &&\
+            sudo apt install curl  &&\
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
+            sudo chmod +x /usr/local/bin/docker-compose &&\
             docker ps;
           elif [[ ! $(which docker-compose) && ! $(docker-compose -v) ]]
           then
           echo "Seu sistema não suporta o Docker"
           fi ;;
   windowsnt*) 
-          if [[ $(wsl --set-default-version > 1) ]]
+          if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
-            wsl sudo apt install docker-engine -y &&\
-            wsl docker- ps;
+            sudo apt install docker -y &&\
+            sudo apt install curl  &&\
+            wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
+            wsl sudo chmod +x /usr/local/bin/docker-compose &&\
+            wsl docker ps;
           elif [[ ! $(wsl --version) ]]
           then
             wsl --install && \
             wsl.exe --set-default-version 2 &&\
             wsl --set-default ubuntu &&\
             wsl.exe &&\
-            wsl instalar docker &&\
+            sudo apt install docker -y &&\
+            sudo apt install curl  &&\
+            wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
+            wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
           else
             echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
   msys*)
-          if [[ $(wsl --set-default-version > 1) ]]
+          if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
-            wsl sudo apt install docker-engine -y &&\
+            sudo apt install docker -y &&\
+            sudo apt install curl  &&\
+            wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
+            wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
           elif [[ ! $(wsl --version) ]]
           then
@@ -52,16 +63,22 @@ case "$OSTYPE" in
             wsl.exe --set-default-version 2 &&\
             wsl --set-default ubuntu &&\
             wsl.exe &&\
-            wsl instalar docker &&\
+            sudo apt install docker -y &&\
+            sudo apt install curl  &&\
+            wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
+            wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
           else
             echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
   cygwin*)
-          if [[ $(wsl --set-default-version > 1) ]]
+          if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
-            wsl sudo apt install docker-engine -y &&\
+            sudo apt install docker -y &&\
+            sudo apt install curl  &&\
+            wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
+            wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
           elif [[ ! $(wsl --version) ]]
           then
@@ -69,7 +86,10 @@ case "$OSTYPE" in
             wsl.exe --set-default-version 2 &&\
             wsl --set-default ubuntu &&\
             wsl.exe &&\
-            wsl instalar docker &&\
+            sudo apt install docker -y &&\
+            sudo apt install curl  &&\
+            wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
+            wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
           else
             echo "Seu sistema não tem suporte ao Docker"
