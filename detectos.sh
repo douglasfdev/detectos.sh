@@ -29,8 +29,8 @@ case "$OSTYPE" in
           if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
-            sudo apt install docker -y &&\
-            sudo apt install curl  &&\
+            wsl sudo apt install docker -y &&\
+            wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
@@ -40,8 +40,8 @@ case "$OSTYPE" in
             wsl.exe --set-default-version 2 &&\
             wsl --set-default ubuntu &&\
             wsl.exe &&\
-            sudo apt install docker -y &&\
-            sudo apt install curl  &&\
+            wsl sudo apt install docker -y &&\
+            wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
@@ -52,8 +52,8 @@ case "$OSTYPE" in
           if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
-            sudo apt install docker -y &&\
-            sudo apt install curl  &&\
+            wsl sudo apt install docker -y &&\
+            wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
@@ -63,8 +63,8 @@ case "$OSTYPE" in
             wsl.exe --set-default-version 2 &&\
             wsl --set-default ubuntu &&\
             wsl.exe &&\
-            sudo apt install docker -y &&\
-            sudo apt install curl  &&\
+            wsl sudo apt install docker -y &&\
+            wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
@@ -75,8 +75,8 @@ case "$OSTYPE" in
           if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
-            sudo apt install docker -y &&\
-            sudo apt install curl  &&\
+            wsl sudo apt install docker -y &&\
+            wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
@@ -86,8 +86,8 @@ case "$OSTYPE" in
             wsl.exe --set-default-version 2 &&\
             wsl --set-default ubuntu &&\
             wsl.exe &&\
-            sudo apt install docker -y &&\
-            sudo apt install curl  &&\
+            wsl sudo apt install docker -y &&\
+            wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             wsl sudo chmod +x /usr/local/bin/docker-compose &&\
             wsl docker ps;
