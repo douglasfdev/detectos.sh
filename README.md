@@ -19,5 +19,6 @@ O Docker resolverá o problema se caso, você não tiver o driver do banco de da
 #### MySQL
 <details>
 
-Por padrão o projeto usa o banco de dados MySQL, porém você pode alterar no `docker-compose.yml` no parametro: `image: mysql` para `image: SQL desejado`
+Por padrão o projeto usa o banco de dados MySQL, porém você pode alterar no `docker-compose.yml` no parametro: `image: mysql` para `image: SQL desejado`.
+Poderá escolher seu banco de dados relacionais a partir deste link: [Docker Hub](https://hub.docker.com/search?q=)
 </details>
