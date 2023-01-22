@@ -1,11 +1,24 @@
 #!/bin/bash
 
+set -u
+
+abort() {
+  printf "%s\n" "$@" >&2
+  exit 1
+}
+
+if [ -z "${BASH_VERSION:-}" ]
+then
+  abort "Bash is required to interpret this script."
+fi
+
 case "$OSTYPE" in
   darwin*)
           if [[ $(which docker) && $(docker --version) ]]
           then
             wait open -a Docker.app 
             docker ps;
+            echo "Aguarde a imagem do Docker subir para rodar o projeto"
           else /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&\
             brew install docker &&\
             brew install docker-compose &&\
@@ -15,7 +28,7 @@ case "$OSTYPE" in
   linux*)
           if [[ $(which docker) && $(docker --version) ]]
           then
-            wait open -a Docker.app &&\
+            wait systemctl --user start docker-desktop &&\
             docker ps;
           elif [[ ! $(which docker) && ! $(docker --version) ]]
           then
