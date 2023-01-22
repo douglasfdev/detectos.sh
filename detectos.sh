@@ -26,7 +26,7 @@ case "$OSTYPE" in
           echo "Seu sistema não suporta o Docker"
           fi ;;
   windowsnt*) 
-          if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
+          if [[ $(wsl --set-default-version > 1) && ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
             wsl sudo apt install docker -y &&\
@@ -49,7 +49,7 @@ case "$OSTYPE" in
             echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
   msys*)
-          if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
+          if [[ $(wsl --set-default-version > 1) && ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
             wsl sudo apt install docker -y &&\
@@ -72,7 +72,7 @@ case "$OSTYPE" in
             echo "Seu sistema não tem suporte ao Docker"
           fi ;; 
   cygwin*)
-          if [[ $(wsl --set-default-version > 1) $$ ! $(which docker) && !$(docker --version) ]]
+          if [[ $(wsl --set-default-version > 1) && ! $(which docker) && !$(docker --version) ]]
           then
             wsl.exe && \
             wsl sudo apt install docker -y &&\
