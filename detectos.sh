@@ -32,7 +32,7 @@ case "$OSTYPE" in
   linux*)
           if [[ $(which docker) && $(docker --version) ]]
           then
-            wait -f $(systemctl --user start docker-desktop)
+            wait -for $(systemctl --user start docker-desktop)
             docker ps
             echo "Aguarde a imagem do Docker subir para rodar o projeto";
           elif [[ ! $(which docker) && ! $(docker --version) ]]
@@ -41,7 +41,7 @@ case "$OSTYPE" in
             sudo apt install curl 
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-            wait -f $(systemctl --user start docker-desktop)
+            wait -for $(systemctl --user start docker-desktop)
             docker ps
             echo "Aguarde a imagem do Docker subir para rodar o projeto";
           elif [[ ! $(which docker-compose) && ! $(docker-compose -v) ]]
