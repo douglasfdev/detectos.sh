@@ -37,6 +37,7 @@ case "$OSTYPE" in
             wsl sudo apt install curl  &&\
             wsl sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&\
             wsl sudo chmod +x /usr/local/bin/docker-compose &&\
+            # TODO que encontrar um script que abra o Docker no windows via CLI
             wsl docker ps;
           elif [[ ! $(wsl --version) ]]
           then
